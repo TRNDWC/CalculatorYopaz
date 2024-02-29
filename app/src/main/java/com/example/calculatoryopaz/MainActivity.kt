@@ -245,6 +245,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     binding.imvResult.text = number
                     dot = false
                 }
+
+                R.id.btnP -> {
+                    percentage()
+                }
             }
         }
     }
@@ -318,6 +322,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             firstNumber /= lastNumber
         }
         binding.imvResult.text = myFormatter.format(firstNumber)
+        dot = true
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun percentage() {
+        var num = java.lang.Double.parseDouble(binding.imvResult.text.toString())
+        num /= 100
+        binding.imvResult.text = myFormatter.format(num)
+
+        firstNumber = num
+        lastNumber = 0.0
+
         dot = true
     }
 
